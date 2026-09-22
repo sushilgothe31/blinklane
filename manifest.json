@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "BlinkLane Solana Core",
+  "version": "1.0.0",
+  "description": "Premium Web3 checkout engine bridging Solana token flows into Web2 pipelines.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://blinklane-api.onrender.com/*"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["injectedscript.js", "config.js"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ]
+}
