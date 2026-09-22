@@ -4,7 +4,10 @@
   "version": "1.0.0",
   "description": "Premium Web3 checkout engine bridging Solana token flows into Web2 pipelines.",
   "permissions": ["activeTab", "scripting"],
-  "host_permissions": ["https://blinklane-api.onrender.com/*"],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "https://blinklane-api.onrender.com/*"
+  ],
   "action": {
     "default_popup": "popup.html"
   },

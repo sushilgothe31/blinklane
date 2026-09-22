@@ -15,7 +15,8 @@ configScript.onload = () => {
 };
 
 // 2. Inject Premium Cyberpunk UI Widget Into Target Web2 Canvas Interface
-window.addEventListener("load", () => {
+function renderBlinkLaneWidget() {
+  if (document.getElementById("blinklane-premium-widget")) return;
   if (!document.body) return;
 
   const widget = document.createElement('div');
@@ -71,7 +72,13 @@ window.addEventListener("load", () => {
   btn.addEventListener("click", () => {
     window.postMessage({ type: "BLINKLANE_INITIATE_FLOW" }, "*");
   });
-});
+}
+
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", renderBlinkLaneWidget, { once: true });
+} else {
+  renderBlinkLaneWidget();
+}
 
 // 3. Forward cryptographically signed proofs downstream to off-chain Web2 validation API
 window.addEventListener("message", async (event) => {
